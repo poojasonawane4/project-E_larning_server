@@ -25,8 +25,10 @@ app.use("/api/v1/courses", require("./v1/routes/courses.route"));
 app.use("/api/v1/review", require("./v1/routes/review.route"));
 app.use("/api/v1/quetions", require("./v1/routes/quetion.route"));
 app.use("/api/v1/create-quiz", require("./v1/routes/create-quiz.route"));
-app.use("/api/v1/studentsQuizAnswer", require("./v1/routes/studentQuizResponse.route"));
-
+app.use(
+  "/api/v1/studentsQuizAnswer",
+  require("./v1/routes/studentQuizResponse.route")
+);
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
