@@ -26,7 +26,6 @@ class UserCtrl {
       "demoId",
       "courseId",
       "admission",
-
     ]);
   }
 
