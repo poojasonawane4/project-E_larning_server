@@ -1,7 +1,6 @@
 const { verifyToken } = require("./token");
 
 function authorize(roles = []) {
-
   return (req, res, next) => {
     const token = req.headers?.authorization;
 
@@ -11,7 +10,7 @@ function authorize(roles = []) {
       // console.log("payload:", payload?._id);
       //token is valid
       const { _id, role } = payload;
-      console.log("role", role, payload)
+      console.log("role", role, payload);
       if (roles.includes(role)) {
         next();
       } else {
@@ -22,9 +21,7 @@ function authorize(roles = []) {
       }
     } else {
       res.status(420).send({ message: "Access Token expired", error: null });
-
     }
-
   };
 }
 

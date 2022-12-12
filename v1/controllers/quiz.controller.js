@@ -3,9 +3,7 @@ const _ = require("lodash");
 const QuizModel = require("../models/quiz.model");
 const CourseModel = require("../models/course.model");
 
-
 class QuizCtrl {
-
   static pickQuiz(quiz) {
     return _.pick(quiz, [
       "_id",
@@ -14,7 +12,7 @@ class QuizCtrl {
       "questions",
       "question",
       "options",
-      "answer"
+      "answer",
     ]);
   }
 
@@ -26,7 +24,7 @@ class QuizCtrl {
       .then((result) => {
         res
           .status(201)
-          .send({ message: "Quiz created", data: QuizCtrl.pickQuiz(result) })
+          .send({ message: "Quiz created", data: QuizCtrl.pickQuiz(result) });
       })
       .catch((err) => {
         console.log(err);
@@ -57,12 +55,12 @@ class QuizCtrl {
       .then((result) => {
         res
           .status(200)
-          .send({ message: "Quiz updated", data: QuizCtrl.pickQuiz(result) })
+          .send({ message: "Quiz updated", data: QuizCtrl.pickQuiz(result) });
       })
       .catch((err) => {
         console.log(err);
-        res.status(404).send({ message: "Quiz not updated", error: err })
-      })
+        res.status(404).send({ message: "Quiz not updated", error: err });
+      });
   }
 
   static deleteQuiz(req, res) {
@@ -71,27 +69,27 @@ class QuizCtrl {
     QuizModel.findByIdAndDelete({ _id: id })
       .then((result) => {
         res
-          .status(200).send({ message: "Quiz deleted", data: QuizCtrl.pickQuiz(result) })
+          .status(200)
+          .send({ message: "Quiz deleted", data: QuizCtrl.pickQuiz(result) });
       })
       .catch((err) => {
-        res
-          .status(404)
-          .send({ message: "Could not delete", error: err });
-      })
+        res.status(404).send({ message: "Could not delete", error: err });
+      });
   }
 
   static fetchAllQuiz(req, res) {
-
     QuizModel.find()
       .then((result) => {
-        res.
-          status(200)
-          .send({ message: "fetch all users", data: QuizCtrl.pickQuiz(result) });
+        res
+          .status(200)
+          .send({
+            message: "fetch all users",
+            data: QuizCtrl.pickQuiz(result),
+          });
       })
       .catch((err) => {
-        res
-          .status(404).send({ message: "No quiz data found", error: err })
-      })
+        res.status(404).send({ message: "No quiz data found", error: err });
+      });
   }
 
   static fetchAllCourses(req, res) {
