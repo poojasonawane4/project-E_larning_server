@@ -32,7 +32,7 @@ const {
 } = require("../controllers/user.controller");
 
 router.post(
-  "/",
+  "",
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "idDoc", maxCount: 1 },
@@ -59,11 +59,7 @@ router.delete("/:id", authorize(["teacher", "admin"]), deleteUser);
 //http://localhost:2020/api/v1/users/statistics?role="customer"
 router.get("/statistics", authorize(["teacher", "admin"]), userStatistics);
 
-router.get(
-  "/:id",
-  authorize(["teacher", "admin", "student"]),
-  fetchOneUser
-);
+router.get("/:id", authorize(["teacher", "admin", "student"]), fetchOneUser);
 router.get("/", authorize(["teacher", "admin"]), fetchAllUser);
 router.put(
   "/image/:id",
