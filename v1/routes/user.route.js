@@ -32,7 +32,7 @@ const {
 } = require("../controllers/user.controller");
 
 router.post(
-  "",
+  "/",
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "idDoc", maxCount: 1 },
