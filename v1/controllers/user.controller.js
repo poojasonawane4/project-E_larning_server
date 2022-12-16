@@ -32,22 +32,22 @@ class UserCtrl {
   static createUser(req, res) {
     const user = req.body;
 
-    // console.log("file", req.file);
-    // console.log("files", req.files);
+    console.log("file", req.file);
+    console.log("files", req.files);
 
     // encrypt the password if available
     if (user.password) user.password = encrypt(user.password);
 
     //save the filename if available
-    // if (req.files.avatar) {
-    //   const ava = req?.files.avatar[0];
-    //   user.avatar = `users-avatar/${ava?.filename}`;
-    // }
+    if (req.files.avatar) {
+      const ava = req?.files.avatar[0];
+      user.avatar = `users-avatar/${ava?.filename}`;
+    }
 
-    // if (req.files.idDoc) {
-    //   const ava = req?.files.idDoc[0];
-    //   user.idDoc = `users-id/${ava?.filename}`;
-    // }
+    if (req.files.idDoc) {
+      const ava = req?.files.idDoc[0];
+      user.idDoc = `users-id/${ava?.filename}`;
+    }
 
     new UserModel(user)
       .save()
@@ -70,15 +70,15 @@ class UserCtrl {
     if (user.password) user.password = encrypt(user.password);
 
     //save the filename if available
-    // if (req.files.avatar) {
-    //   const ava = req?.files.avatar[0];
-    //   user.avatar = `users-avatar/${ava?.filename}`;
-    // }
+    if (req.files.avatar) {
+      const ava = req?.files.avatar[0];
+      user.avatar = `users-avatar/${ava?.filename}`;
+    }
 
-    // if (req.files.idDoc) {
-    //   const ava = req?.files.idDoc[0];
-    //   user.idDoc = `users-id/${ava?.filename}`;
-    // }
+    if (req.files.idDoc) {
+      const ava = req?.files.idDoc[0];
+      user.idDoc = `users-id/${ava?.filename}`;
+    }
 
     UserModel.findOneAndUpdate({ _id: id }, user, { new: true })
       .then((result) => {
